@@ -1,3 +1,6 @@
+# 라이브러리 의존성 설치 필요
+- !pip install -U PyYAML
+
 # Python’s built-in logging tools
 - 개발 작업에서 디버깅 전략은 매우 매우 중요하다. 특히 논리적인 오류 잡아야하는 경우와 백엔드 개발의 경우
 - discord channel로 에러 메시지 출력 기능

@@ -1,3 +1,4 @@
+# 프로젝트별로 로거 환경 설정 파일은 변경해야 한다.
 version: 1
 objects:
   queue:
@@ -18,7 +19,7 @@ handlers:
     filename: 'ieddit.log'
     formatter: simple
   queue_listener:
-    class: utilities.log_utils.logger_util.QueueListenerHandler
+    class: log_utils.logger_util.QueueListenerHandler
     handlers:
       - cfg://handlers.console
       - cfg://handlers.file

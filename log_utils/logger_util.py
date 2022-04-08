@@ -4,8 +4,6 @@ import logging
 from queue import Queue
 import atexit
 
-import config
-
 def _resolve_handlers(l):
     if not isinstance(l, ConvertingList):
         return l

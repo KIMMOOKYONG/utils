@@ -1,3 +1,25 @@
+# logger 사용법
+
+```python
+
+!git clone https://github.com/KIMMOOKYONG/utils.git
+mv ./utils/log_utils ./
+rm -rf ./utils
+
+# 테스트 코드
+# 아래 코드를 로깅할 모듈의 최상단에 포함 시킨다.
+import logging
+import log_utils.logger_init
+logger = logging.getLogger("__main__")
+
+logger.warning("Woohoo I am Logging!")
+logger.warning("Woohoo I am Logging!")
+logger.warning("Woohoo I am Logging!")
+logger.warning("Woohoo I am Logging!")
+
+```
+
+
 # 라이브러리 의존성 설치 필요
 - !pip install -U PyYAML
 

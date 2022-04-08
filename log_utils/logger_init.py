@@ -12,8 +12,8 @@ import logging
 # path = os.path.join(os.getcwd(), 'utilities', 'log_utils', 'logger_config.yaml')
 path = os.path.join(os.getcwd(), 'log_utils', 'logger_config.yaml')
 with open(path, 'r') as stream:
-    try:
-      logging_config = yaml.load(stream, Loader=yaml.FullLoader)
+    try: # pip install -U PyYAML
+      logging_config = yaml.load(stream, Loader=yaml.SafeLoader)
     except yaml.YAMLError as exc:
       print("Error Loading Logger Config")
       pass

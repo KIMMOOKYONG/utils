@@ -89,7 +89,7 @@ loggers:
     handlers:
       - queue_listener
     propagate: false
-root:
+root: # 설정된 로그 인스턴스가 존재하지 않는 경우 기본 로그로 동작합니다.
   level: WARNING
   handlers:
     - console

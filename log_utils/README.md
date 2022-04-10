@@ -19,6 +19,56 @@ logger.warning("Woohoo I am Logging!")
 
 ```
 
+# loggig 환경설정(환경설정파일)
+```yaml
+# 참조 사이트
+# https://www.daleseo.com/python-logging-config/
+
+# 프로젝트별로 로거 환경 설정 파일은 변경해야 한다.
+# 키워드: Logger From Dictionary
+version: 1
+objects:
+  queue:
+    class: queue.Queue
+    maxsize: 1000
+formatters:
+  simple:
+    format: '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG # 로깅 레벨을 만족 할 경우 메시지를 로깅한다.
+    formatter: simple
+    stream: ext://sys.stdout
+  file:
+    class: logging.FileHandler
+    level: DEBUG # 로깅 레벨을 만족 할 경우 메시지를 로깅한다.
+    filename: 'ieddit.log'
+    formatter: simple
+  queue_listener:
+    class: log_utils.logger_util.QueueListenerHandler
+    handlers: # 파일과 콘솔로 로깅 메시지를 출력한다.
+      - cfg://handlers.console
+      - cfg://handlers.file
+    queue: cfg://objects.queue
+loggers:
+  __main__:
+    level: DEBUG
+    handlers:
+      - queue_listener
+    propagate: false
+  __demo__:
+    level: DEBUG
+    handlers:
+      - console
+      - file
+    propagate: false    
+root: # 설정된 로그 인스턴스가 존재하지 않는 경우 기본 로그로 동작합니다.
+  level: DEBUG
+  handlers:
+    - console
+```
+
 
 # 라이브러리 의존성 설치 필요
 - !pip install -U PyYAML
